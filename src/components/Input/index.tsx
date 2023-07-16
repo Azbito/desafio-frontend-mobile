@@ -3,15 +3,19 @@ import { TextInput, TextInputProps, StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { Colors } from 'utils/colors';
 import { Text } from 'components/Text';
-import { styles } from './styles';
+import { inputStyles } from './styles';
 
 interface InputProps extends TextInputProps {
   isConfidential?: boolean;
   label?: string;
+  border?: borderProp;
 }
 
-export function Input({ isConfidential, label, ...props }: InputProps) {
+export type borderProp = 'RIGHT' | 'WRONG' | null;
+
+export function Input({ isConfidential, label, border, ...props }: InputProps) {
   const [isHidden, setIsHidden] = useState(true);
+  const styles = inputStyles(border || 'EMPTY');
 
   if (isConfidential) {
     return (

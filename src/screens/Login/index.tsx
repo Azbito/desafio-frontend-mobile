@@ -2,45 +2,46 @@ import { Button } from 'components/Button';
 import { Colors } from 'utils/colors';
 import { Divider } from 'components/Divider';
 import { Text } from 'components/Text';
-import { Input } from 'components/Input';
+import { Input, borderProp } from 'components/Input';
 import { SocialMediaButton } from 'components/SocialMediaButton';
 import { StatusBar } from 'expo-status-bar';
-import { Image, View } from 'react-native';
+import { Image, View, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
 import { styles } from './styles';
-import { useContext, useEffect, useState } from 'react';
-import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { useContext, useState } from 'react';
+import { AuthGoogleContext } from 'contexts/authGoogle';
 
 export function Login() {
-  const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
+  const { onGoogleButtonPress } = useContext(AuthGoogleContext);
+  const [emailInputBorderColor, setEmailInputBorderColor] = useState<borderProp>(null);
+  const [passwordInputBorderColor, setPasswordInputBorderColor] = useState<borderProp>(null);
 
-  // Handle user state changes
-  function onAuthStateChanged(user: any) {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  }
+  const handleEmailInputChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    const text = e.nativeEvent.text;
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text);
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
+    if (isValidEmail) {
+      setEmailInputBorderColor('RIGHT');
+      return;
+    }
 
-  async function onGoogleButtonPress() {
-    const { idToken } = await GoogleSignin.signIn();
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    if (text.trim() === '') {
+      setEmailInputBorderColor(null);
+      return;
+    }
 
-    const user_sign_in = auth().signInWithCredential(googleCredential);
-    user_sign_in
-      .then((user) => {
-        console.log(user);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+    setEmailInputBorderColor('WRONG');
+  };
 
-  if (initializing) return null;
+  const handlePasswordInputChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    const text = e.nativeEvent.text;
+
+    if (text) {
+      setPasswordInputBorderColor('RIGHT');
+      return;
+    }
+
+    setPasswordInputBorderColor(null);
+  };
 
   return (
     <View style={styles.container}>
@@ -58,8 +59,16 @@ export function Login() {
         >
           Login
         </Text>
-        <Input label="Email ou Telefone" />
-        <Input isConfidential />
+        <Input
+          border={emailInputBorderColor}
+          onChange={handleEmailInputChange}
+          label="Email ou Telefone"
+        />
+        <Input
+          border={passwordInputBorderColor}
+          onChange={handlePasswordInputChange}
+          isConfidential
+        />
         <Text
           fontFamily="Poppins"
           fontWeight="REGULAR"

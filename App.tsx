@@ -2,7 +2,6 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { AuthGoogleContext, AuthGoogleProvider } from 'contexts/authGoogle';
 import { useFonts } from 'expo-font';
 import { useContext } from 'react';
-import { Text } from 'react-native';
 import { Login } from 'screens/Login';
 
 export default function App() {
@@ -20,5 +19,5 @@ export default function App() {
     return undefined;
   }
 
-  return <AuthGoogleProvider>{user && <Login />}</AuthGoogleProvider>;
+  return <AuthGoogleProvider>{!user && <Login />}</AuthGoogleProvider>;
 }
