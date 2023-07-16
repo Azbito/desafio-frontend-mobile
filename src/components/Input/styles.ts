@@ -33,6 +33,6 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
     width: '100%',
     paddingHorizontal: 17,
-    paddingVertical: 16,
+    paddingVertical: 15,
   },
 });
