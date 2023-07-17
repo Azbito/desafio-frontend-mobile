@@ -8,7 +8,7 @@ export default function App() {
   GoogleSignin.configure({
     webClientId: '667595391344-lf00smgg3hvkt7kproclp671qb557uof.apps.googleusercontent.com',
   });
-  const { user } = useContext(AuthGoogleContext);
+  const { isSigned } = useContext(AuthGoogleContext);
   const [fontsLoaded] = useFonts({
     'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
     'Poppins-SemiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
@@ -19,5 +19,5 @@ export default function App() {
     return undefined;
   }
 
-  return <AuthGoogleProvider>{!user && <Login />}</AuthGoogleProvider>;
+  return <AuthGoogleProvider>{!isSigned && <Login />}</AuthGoogleProvider>;
 }

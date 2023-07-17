@@ -3,17 +3,19 @@ import React from 'react';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
+type userProps = [] | null | undefined | boolean;
+
 export const AuthGoogleContext = createContext<{
-  user: [] | null | undefined;
+  isSigned: userProps;
   onGoogleButtonPress: () => void;
 }>({
-  user: null,
+  isSigned: null,
   onGoogleButtonPress: () => {},
 });
 
 export function AuthGoogleProvider({ children }: any) {
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState<userProps>(null);
 
   function onAuthStateChanged(user: any) {
     setUser(user);
@@ -41,7 +43,7 @@ export function AuthGoogleProvider({ children }: any) {
   return (
     <AuthGoogleContext.Provider
       value={{
-        user,
+        isSigned: !!user,
         onGoogleButtonPress,
       }}
     >
