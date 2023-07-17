@@ -33,12 +33,12 @@ export function Login() {
   function handleSetErrors(prop: 'login' | 'password', message: string) {
     setErrors((prevState) => ({ ...prevState, [prop]: message }));
   }
-
   function handleChange(
     prop: 'login' | 'password',
-    value: NativeSyntheticEvent<TextInputChangeEventData>
+    event: NativeSyntheticEvent<TextInputChangeEventData>
   ) {
-    setFields((prevState) => ({ ...prevState, [prop]: value }));
+    const { text } = event.nativeEvent;
+    setFields((prevState) => ({ ...prevState, [prop]: text }));
 
     if (errors[prop]) {
       handleSetErrors(prop, '');
@@ -49,7 +49,7 @@ export function Login() {
     const isEmptyPassword = !fields.password;
 
     if (!isValidEmail(fields.login) || !isValidPhoneNumber(fields.login) || isEmptyPassword) {
-      if (!isValidEmail(fields.login) || !isValidPhoneNumber(fields.login)) {
+      if (!isValidPhoneNumber(fields.login) && !isValidEmail(fields.login)) {
         handleSetErrors('login', 'Preencha com um email ou número de telefone válido');
       }
 
@@ -60,13 +60,6 @@ export function Login() {
       return;
     }
   }
-
-  // const handleButtonClick = () => {
-  //   if (login === '') {
-  //     setLoginError('Por favor, preencha com um email ou número de telefone válido.')
-  //   }
-
-  // }
 
   return (
     <View style={styles.container}>
