@@ -9,7 +9,7 @@ interface InputStylesProps {
   input: ViewStyle;
 }
 
-export const inputStyles = (border: string): InputStylesProps => {
+export const inputStyles = ({ hasError }: { hasError: boolean }): InputStylesProps => {
   const styles: InputStylesProps = StyleSheet.create<InputStylesProps>({
     title: {
       fontFamily: 'Poppins-Regular',
@@ -29,8 +29,7 @@ export const inputStyles = (border: string): InputStylesProps => {
       letterSpacing: 2.8,
       fontSize: 14,
       borderWidth: 1,
-      borderColor:
-        border === 'RIGHT' ? Colors.GREEN : border === 'WRONG' ? Colors.RED_600 : Colors.ORANGE_700,
+      borderColor: hasError ? Colors.RED_600 : Colors.ORANGE_700,
       borderRadius: 16,
       width: '100%',
       paddingHorizontal: 17,
@@ -39,8 +38,7 @@ export const inputStyles = (border: string): InputStylesProps => {
     input: {
       fontFamily: 'Poppins-Regular',
       borderWidth: 1,
-      borderColor:
-        border === 'RIGHT' ? Colors.GREEN : border === 'WRONG' ? Colors.RED_600 : Colors.ORANGE_700,
+      borderColor: hasError ? Colors.RED_600 : Colors.ORANGE_700,
       borderRadius: 16,
       width: '100%',
       paddingHorizontal: 17,

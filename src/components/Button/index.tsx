@@ -15,13 +15,19 @@ interface ButtonProps extends TouchableOpacityProps {
   iconGallery?: 'MaterialCommunityIcons' | 'Feather';
 }
 
-export function Button({ text, iconGallery = 'Feather', iconName, isOrange = false }: ButtonProps) {
+export function Button({
+  text,
+  iconGallery = 'Feather',
+  iconName,
+  isOrange = false,
+  ...props
+}: ButtonProps) {
   const Icon = iconGallery == 'MaterialCommunityIcons' ? MaterialCommunityIcon : FeatherIcon;
   const styles = buttonStylesColor(isOrange);
 
   return (
     <View style={styles.buttonContainer}>
-      <TouchableOpacity>
+      <TouchableOpacity {...props}>
         {isOrange ? (
           <LinearGradient
             colors={[Colors.ORANGE_700, Colors.ORANGE_500]}

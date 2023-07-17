@@ -3,6 +3,7 @@ import { AuthGoogleContext, AuthGoogleProvider } from 'contexts/authGoogle';
 import { useFonts } from 'expo-font';
 import { useContext } from 'react';
 import { Login } from 'screens/Login';
+import { Overview } from 'screens/Overview';
 
 export default function App() {
   GoogleSignin.configure({

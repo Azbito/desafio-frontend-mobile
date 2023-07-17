@@ -2,46 +2,71 @@ import { Button } from 'components/Button';
 import { Colors } from 'utils/colors';
 import { Divider } from 'components/Divider';
 import { Text } from 'components/Text';
-import { Input, borderProp } from 'components/Input';
+import { Input } from 'components/Input';
 import { SocialMediaButton } from 'components/SocialMediaButton';
 import { StatusBar } from 'expo-status-bar';
 import { Image, View, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
 import { styles } from './styles';
 import { useContext, useState } from 'react';
 import { AuthGoogleContext } from 'contexts/authGoogle';
+import { isValidEmail } from 'utils/isValidEmail';
+import { isValidPhoneNumber } from 'utils/isValidPhoneNumber';
+
+interface FieldsProps {
+  login: string;
+  password: string;
+}
 
 export function Login() {
   const { onGoogleButtonPress } = useContext(AuthGoogleContext);
-  const [emailInputBorderColor, setEmailInputBorderColor] = useState<borderProp>(null);
-  const [passwordInputBorderColor, setPasswordInputBorderColor] = useState<borderProp>(null);
 
-  const handleEmailInputChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
-    const text = e.nativeEvent.text;
-    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text);
+  const [fields, setFields] = useState<FieldsProps>({
+    login: '',
+    password: '',
+  });
 
-    if (isValidEmail) {
-      setEmailInputBorderColor('RIGHT');
+  const [errors, setErrors] = useState<FieldsProps>({
+    login: '',
+    password: '',
+  });
+
+  function handleSetErrors(prop: 'login' | 'password', message: string) {
+    setErrors((prevState) => ({ ...prevState, [prop]: message }));
+  }
+
+  function handleChange(
+    prop: 'login' | 'password',
+    value: NativeSyntheticEvent<TextInputChangeEventData>
+  ) {
+    setFields((prevState) => ({ ...prevState, [prop]: value }));
+
+    if (errors[prop]) {
+      handleSetErrors(prop, '');
+    }
+  }
+
+  function handleLogin() {
+    const isEmptyPassword = !fields.password;
+
+    if (!isValidEmail(fields.login) || !isValidPhoneNumber(fields.login) || isEmptyPassword) {
+      if (!isValidEmail(fields.login) || !isValidPhoneNumber(fields.login)) {
+        handleSetErrors('login', 'Preencha com um email ou número de telefone válido');
+      }
+
+      if (isEmptyPassword) {
+        handleSetErrors('password', 'Preencha esse campo.');
+      }
+
       return;
     }
+  }
 
-    if (text.trim() === '') {
-      setEmailInputBorderColor(null);
-      return;
-    }
+  // const handleButtonClick = () => {
+  //   if (login === '') {
+  //     setLoginError('Por favor, preencha com um email ou número de telefone válido.')
+  //   }
 
-    setEmailInputBorderColor('WRONG');
-  };
-
-  const handlePasswordInputChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
-    const text = e.nativeEvent.text;
-
-    if (text) {
-      setPasswordInputBorderColor('RIGHT');
-      return;
-    }
-
-    setPasswordInputBorderColor(null);
-  };
+  // }
 
   return (
     <View style={styles.container}>
@@ -60,13 +85,15 @@ export function Login() {
           Login
         </Text>
         <Input
-          border={emailInputBorderColor}
-          onChange={handleEmailInputChange}
+          value={fields.login}
+          onChange={(text) => handleChange('login', text)}
+          error={errors.login}
           label="Email ou Telefone"
         />
         <Input
-          border={passwordInputBorderColor}
-          onChange={handlePasswordInputChange}
+          value={fields.password}
+          error={errors.password}
+          onChange={(text) => handleChange('password', text)}
           isConfidential
         />
         <Text
@@ -80,7 +107,7 @@ export function Login() {
           Esqueci minha senha
         </Text>
       </View>
-      <Button text="Entrar" isOrange />
+      <Button onPress={handleLogin} text="Entrar" isOrange />
       <View style={styles.signUpContainer}>
         <Text fontFamily="Poppins" fontWeight="REGULAR" color={Colors.GREY_300} fontSize={13}>
           Não tem uma Conta?

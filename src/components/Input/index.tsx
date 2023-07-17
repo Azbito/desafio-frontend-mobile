@@ -8,18 +8,16 @@ import { inputStyles } from './styles';
 interface InputProps extends TextInputProps {
   isConfidential?: boolean;
   label?: string;
-  border?: borderProp;
+  error?: string;
 }
 
-export type borderProp = 'RIGHT' | 'WRONG' | null;
-
-export function Input({ isConfidential, label, border, ...props }: InputProps) {
+export function Input({ isConfidential, label, error = '', ...props }: InputProps) {
   const [isHidden, setIsHidden] = useState(true);
-  const styles = inputStyles(border || 'EMPTY');
+  const styles = inputStyles({ hasError: error !== '' });
 
   if (isConfidential) {
     return (
-      <View>
+      <View style={{ position: 'relative' }}>
         <Text
           color={Colors.GREY_400}
           fontFamily="Poppins"
@@ -55,12 +53,17 @@ export function Input({ isConfidential, label, border, ...props }: InputProps) {
             />
           )}
         </View>
+        {error && (
+          <Text fontFamily="Poppins" color={Colors.RED_600} fontWeight="REGULAR" fontSize={10}>
+            {error}
+          </Text>
+        )}
       </View>
     );
   }
 
   return (
-    <View>
+    <View style={{ position: 'relative' }}>
       {label && (
         <Text
           color={Colors.GREY_400}
@@ -73,6 +76,11 @@ export function Input({ isConfidential, label, border, ...props }: InputProps) {
         </Text>
       )}
       <TextInput style={styles.input} {...props} maxLength={props.maxLength ?? 300} />
+      {error && (
+        <Text fontFamily="Poppins" color={Colors.RED_600} fontWeight="REGULAR" fontSize={10}>
+          {error}
+        </Text>
+      )}
     </View>
   );
 }
