@@ -22,7 +22,7 @@ export const inputStyles = ({ hasError }: { hasError: boolean }): InputStylesPro
     eye: {
       position: 'absolute',
       right: 16,
-      top: 20,
+      top: -42,
     },
     confidentialInput: {
       fontFamily: 'Roboto',

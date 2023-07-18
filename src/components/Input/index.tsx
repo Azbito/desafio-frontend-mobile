@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextInput, TextInputProps, StyleSheet, View } from 'react-native';
+import { TextInput, TextInputProps, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { Colors } from 'utils/colors';
 import { Text } from 'components/Text';
@@ -36,21 +36,13 @@ export function Input({ isConfidential, label, error = '', ...props }: InputProp
             {...props}
           />
           {isHidden ? (
-            <Icon
-              onPress={() => setIsHidden(!isHidden)}
-              style={styles.eye}
-              name="eye-off"
-              size={24}
-              color={Colors.ORANGE_600}
-            />
+            <TouchableOpacity onPress={() => setIsHidden(!isHidden)}>
+              <Icon style={styles.eye} name="eye-off" size={24} color={Colors.ORANGE_600} />
+            </TouchableOpacity>
           ) : (
-            <Icon
-              onPress={() => setIsHidden(!isHidden)}
-              style={styles.eye}
-              name="eye"
-              size={24}
-              color={Colors.ORANGE_600}
-            />
+            <TouchableOpacity onPress={() => setIsHidden(!isHidden)}>
+              <Icon style={styles.eye} name="eye" size={24} color={Colors.ORANGE_600} />
+            </TouchableOpacity>
           )}
         </View>
         {error && (
