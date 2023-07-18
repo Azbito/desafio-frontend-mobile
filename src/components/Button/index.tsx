@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 import { Text } from 'components/Text';
 import { Colors } from 'utils/colors';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -13,6 +13,7 @@ interface ButtonProps extends TouchableOpacityProps {
   isReject?: boolean;
   borderColor?: string;
   iconGallery?: 'MaterialCommunityIcons' | 'Feather';
+  width: string | number;
 }
 
 export function Button({
@@ -20,6 +21,7 @@ export function Button({
   iconGallery = 'Feather',
   iconName,
   isOrange = false,
+  width,
   ...props
 }: ButtonProps) {
   const Icon = iconGallery == 'MaterialCommunityIcons' ? MaterialCommunityIcon : FeatherIcon;
@@ -31,14 +33,14 @@ export function Button({
         {isOrange ? (
           <LinearGradient
             colors={[Colors.ORANGE_700, Colors.ORANGE_500]}
-            start={{ x: 2, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            style={styles.gradient}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0.5, y: 1 }}
+            style={[styles.gradient, { gap: iconName ? 8 : 0, width }]}
           >
             {iconName && (
               <Icon style={{ color: Colors.WHITE, marginBottom: 4 }} size={24} name={iconName} />
             )}
-            <Text fontFamily={'Poppins'} fontWeight="REGULAR" fontSize={16} color={Colors.WHITE}>
+            <Text color={Colors.WHITE} fontFamily={'Poppins'} fontWeight="REGULAR" fontSize={16}>
               {text}
             </Text>
           </LinearGradient>
@@ -47,7 +49,13 @@ export function Button({
             {iconName && (
               <Icon style={{ color: Colors.RED_500, marginBottom: 4 }} size={24} name={iconName} />
             )}
-            <Text fontFamily={'Poppins'} fontWeight="MEDIUM" fontSize={16} color={Colors.RED_500}>
+            <Text
+              textAlign="center"
+              fontFamily={'Poppins'}
+              fontWeight="MEDIUM"
+              fontSize={16}
+              color={Colors.RED_500}
+            >
               {text}
             </Text>
           </View>

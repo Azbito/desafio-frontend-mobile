@@ -13,12 +13,15 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
     'Poppins-SemiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
+    'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf'),
     'Poppins-Medium': require('./assets/fonts/Poppins-Medium.ttf'),
+    'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
+    'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf'),
   });
 
   if (!fontsLoaded) {
     return undefined;
   }
 
-  return <AuthGoogleProvider>{!isSigned && <Login />}</AuthGoogleProvider>;
+  return <AuthGoogleProvider>{!isSigned && <Overview />}</AuthGoogleProvider>;
 }

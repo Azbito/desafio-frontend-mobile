@@ -16,7 +16,7 @@ export const styles = StyleSheet.create<SocialMediaButtonStylesProps>({
     flexDirection: 'row',
     position: 'relative',
     gap: 8,
-    color: Colors.GREY_300,
-    borderColor: Colors.GREY_300,
+    color: Colors.GREY_400,
+    borderColor: Colors.GREY_400,
   },
 });

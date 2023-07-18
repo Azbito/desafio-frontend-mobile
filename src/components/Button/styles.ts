@@ -11,6 +11,7 @@ export const buttonStylesColor = (isOrange: boolean): ButtonStylesProps => {
   const styles = StyleSheet.create<ButtonStylesProps>({
     buttonContainer: {
       width: '100%',
+      justifyContent: 'center',
     },
     gradient: {
       flexDirection: 'row',
@@ -18,7 +19,6 @@ export const buttonStylesColor = (isOrange: boolean): ButtonStylesProps => {
       alignItems: 'center',
       height: 48,
       borderRadius: 16,
-      gap: 8,
     },
     notOrangeContent: {
       borderWidth: 1,

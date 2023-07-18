@@ -9,24 +9,27 @@ interface InputProps extends TextInputProps {
   isConfidential?: boolean;
   label?: string;
   error?: string;
+  width: number | string;
 }
 
-export function Input({ isConfidential, label, error = '', ...props }: InputProps) {
+export function Input({ isConfidential, label, width, error = '', ...props }: InputProps) {
   const [isHidden, setIsHidden] = useState(true);
   const styles = inputStyles({ hasError: error !== '' });
 
   if (isConfidential) {
     return (
-      <View style={{ position: 'relative' }}>
-        <Text
-          color={Colors.GREY_400}
-          fontFamily="Poppins"
-          fontWeight="REGULAR"
-          fontSize={13}
-          marginTop={16}
-        >
-          Senha
-        </Text>
+      <View style={{ position: 'absolute', width }}>
+        {label && (
+          <Text
+            color={Colors.GREY_500}
+            fontFamily="Poppins"
+            fontWeight="REGULAR"
+            fontSize={13}
+            marginTop={16}
+          >
+            {label}
+          </Text>
+        )}
         <View style={styles.confidentialInputContainer}>
           <TextInput
             style={styles.confidentialInput}
@@ -55,10 +58,10 @@ export function Input({ isConfidential, label, error = '', ...props }: InputProp
   }
 
   return (
-    <View style={{ position: 'relative' }}>
+    <View style={{ width }}>
       {label && (
         <Text
-          color={Colors.GREY_400}
+          color={Colors.GREY_500}
           fontFamily="Poppins"
           fontWeight="REGULAR"
           fontSize={13}

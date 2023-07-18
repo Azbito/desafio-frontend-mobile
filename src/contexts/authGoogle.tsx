@@ -24,7 +24,7 @@ export function AuthGoogleProvider({ children }: any) {
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
+    return subscriber;
   }, []);
 
   async function onGoogleButtonPress() {

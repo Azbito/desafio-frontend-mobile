@@ -1,9 +1,10 @@
 import { TextPropsAndroid, Text as NativeText } from 'react-native';
 import { Poppins, Roboto } from 'utils/fonts';
+import { ReactNode } from 'react';
 
 interface TextProps extends TextPropsAndroid {
-  children: string;
-  fontWeight: 'REGULAR' | 'MEDIUM' | 'SEMIBOLD';
+  children: ReactNode;
+  fontWeight: 'REGULAR' | 'MEDIUM' | 'SEMIBOLD' | 'BOLD';
   fontFamily: 'Poppins' | 'Roboto';
   marginTop?: number;
   marginBottom?: number;
@@ -12,19 +13,20 @@ interface TextProps extends TextPropsAndroid {
   textDecorationLine?: 'underline' | 'none';
   color: string;
   fontSize: number;
+  textAlign?: 'center' | 'left' | 'right';
 }
 
 export function Text({
   fontFamily,
   fontWeight,
   fontSize,
-  paddingRight,
   marginTop,
   marginBottom,
   marginVertical,
   color,
   textDecorationLine,
   children,
+  textAlign,
   ...props
 }: TextProps) {
   const font: any = fontFamily == 'Poppins' ? Poppins : Roboto;
@@ -39,7 +41,7 @@ export function Text({
         marginBottom,
         marginVertical,
         textDecorationLine,
-        paddingRight,
+        textAlign,
       }}
       {...props}
     >

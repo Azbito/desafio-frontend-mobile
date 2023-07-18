@@ -72,7 +72,7 @@ export function Login() {
           fontFamily="Poppins"
           fontWeight="SEMIBOLD"
           fontSize={16}
-          color={Colors.GREY_500}
+          color={Colors.GREY_600}
           marginTop={32}
         >
           Login
@@ -88,11 +88,12 @@ export function Login() {
           error={errors.password}
           onChange={(text) => handleChange('password', text)}
           isConfidential
+          label="Senha"
         />
         <Text
           fontFamily="Poppins"
           fontWeight="REGULAR"
-          color={Colors.GREY_300}
+          color={Colors.GREY_400}
           fontSize={13}
           marginVertical={20}
           textDecorationLine="underline"
@@ -102,7 +103,7 @@ export function Login() {
       </View>
       <Button onPress={handleLogin} text="Entrar" isOrange />
       <View style={styles.signUpContainer}>
-        <Text fontFamily="Poppins" fontWeight="REGULAR" color={Colors.GREY_300} fontSize={13}>
+        <Text fontFamily="Poppins" fontWeight="REGULAR" color={Colors.GREY_400} fontSize={13}>
           Não tem uma Conta?
         </Text>
         <Text fontFamily="Poppins" fontWeight="REGULAR" color={Colors.ORANGE_700} fontSize={13}>
@@ -115,7 +116,7 @@ export function Login() {
             fontFamily="Poppins"
             fontWeight="SEMIBOLD"
             fontSize={13}
-            color={Colors.GREY_600}
+            color={Colors.GREY_700}
             paddingRight={7}
           >
             Entrar com
@@ -125,7 +126,7 @@ export function Login() {
         <View style={styles.googleContainer}>
           <SocialMediaButton
             onPress={() => onGoogleButtonPress()}
-            color={Colors.GREY_100}
+            color={Colors.GREY_200}
             text="Continuar com o Google"
           />
         </View>

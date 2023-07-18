@@ -13,7 +13,7 @@ export const inputStyles = ({ hasError }: { hasError: boolean }): InputStylesPro
   const styles: InputStylesProps = StyleSheet.create<InputStylesProps>({
     title: {
       fontFamily: 'Poppins-Regular',
-      color: Colors.GREY_400,
+      color: Colors.GREY_500,
       marginTop: 16,
     },
     confidentialInputContainer: {
@@ -32,6 +32,7 @@ export const inputStyles = ({ hasError }: { hasError: boolean }): InputStylesPro
       borderColor: hasError ? Colors.RED_600 : Colors.ORANGE_700,
       borderRadius: 16,
       width: '100%',
+      height: 44,
       paddingHorizontal: 17,
       paddingVertical: 16,
     },
@@ -41,6 +42,7 @@ export const inputStyles = ({ hasError }: { hasError: boolean }): InputStylesPro
       borderColor: hasError ? Colors.RED_600 : Colors.ORANGE_700,
       borderRadius: 16,
       width: '100%',
+      height: 44,
       paddingHorizontal: 17,
       paddingVertical: 15,
     },
