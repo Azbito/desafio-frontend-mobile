@@ -5,7 +5,13 @@ import { Text } from 'components/Text';
 import { Input } from 'components/Input';
 import { SocialMediaButton } from 'components/SocialMediaButton';
 import { StatusBar } from 'expo-status-bar';
-import { Image, View, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
+import {
+  Image,
+  View,
+  NativeSyntheticEvent,
+  TextInputChangeEventData,
+  ScrollView,
+} from 'react-native';
 import { styles } from './styles';
 import { useContext, useState } from 'react';
 import { AuthGoogleContext } from 'contexts/authGoogle';
@@ -63,72 +69,74 @@ export function Login() {
   }
 
   return (
-    <View style={styles.container}>
-      <Image source={require('../../../assets/images/logo.png')} />
-      <Text fontFamily="Poppins" fontWeight="SEMIBOLD" fontSize={18} color={Colors.GREY_600}>
-        Para entregadores
-      </Text>
-      <View style={styles.loginContainer}>
-        <Text fontFamily="Poppins" fontWeight="SEMIBOLD" fontSize={16} color={Colors.GREY_600}>
-          Login
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <View style={styles.container}>
+        <Image source={require('../../../assets/images/logo.png')} />
+        <Text fontFamily="Poppins" fontWeight="SEMIBOLD" fontSize={18} color={Colors.GREY_600}>
+          Para entregadores
         </Text>
-        <Input
-          width="100%"
-          value={fields.login}
-          onChange={(text) => handleChange('login', text)}
-          error={errors.login}
-          label="Email ou Telefone"
-        />
-        <Input
-          width="100%"
-          value={fields.password}
-          error={errors.password}
-          onChange={(text) => handleChange('password', text)}
-          isConfidential
-          label="Senha"
-        />
-        <Text
-          fontFamily="Poppins"
-          fontWeight="REGULAR"
-          color={Colors.GREY_400}
-          fontSize={13}
-          marginVertical={20}
-          textDecorationLine="underline"
-        >
-          Esqueci minha senha
-        </Text>
-      </View>
-      <Button onPress={handleLogin} text="Entrar" isOrange />
-      <View style={styles.signUpContainer}>
-        <Text fontFamily="Poppins" fontWeight="REGULAR" color={Colors.GREY_400} fontSize={13}>
-          Não tem uma Conta?
-        </Text>
-        <Text fontFamily="Poppins" fontWeight="REGULAR" color={Colors.ORANGE_700} fontSize={13}>
-          Criar agora!
-        </Text>
-      </View>
-      <View style={styles.loginWithContainer}>
-        <View style={styles.loginWithContent}>
+        <View style={styles.loginContainer}>
+          <Text fontFamily="Poppins" fontWeight="SEMIBOLD" fontSize={16} color={Colors.GREY_600}>
+            Login
+          </Text>
+          <Input
+            width="100%"
+            value={fields.login}
+            onChange={(text) => handleChange('login', text)}
+            error={errors.login}
+            label="Email ou Telefone"
+          />
+          <Input
+            width="100%"
+            value={fields.password}
+            error={errors.password}
+            onChange={(text) => handleChange('password', text)}
+            isConfidential
+            label="Senha"
+          />
           <Text
             fontFamily="Poppins"
-            fontWeight="SEMIBOLD"
+            fontWeight="REGULAR"
+            color={Colors.GREY_400}
             fontSize={13}
-            color={Colors.GREY_700}
-            paddingRight={7}
+            marginVertical={20}
+            textDecorationLine="underline"
           >
-            Entrar com
+            Esqueci minha senha
           </Text>
-          <Divider />
         </View>
-        <View style={styles.googleContainer}>
-          <SocialMediaButton
-            onPress={() => onGoogleButtonPress()}
-            color={Colors.GREY_200}
-            text="Continuar com o Google"
-          />
+        <Button onPress={handleLogin} text="Entrar" isOrange />
+        <View style={styles.signUpContainer}>
+          <Text fontFamily="Poppins" fontWeight="REGULAR" color={Colors.GREY_400} fontSize={13}>
+            Não tem uma Conta?
+          </Text>
+          <Text fontFamily="Poppins" fontWeight="REGULAR" color={Colors.ORANGE_700} fontSize={13}>
+            Criar agora!
+          </Text>
         </View>
+        <View style={styles.loginWithContainer}>
+          <View style={styles.loginWithContent}>
+            <Text
+              fontFamily="Poppins"
+              fontWeight="SEMIBOLD"
+              fontSize={13}
+              color={Colors.GREY_700}
+              paddingRight={7}
+            >
+              Entrar com
+            </Text>
+            <Divider />
+          </View>
+          <View style={styles.googleContainer}>
+            <SocialMediaButton
+              onPress={() => onGoogleButtonPress()}
+              color={Colors.GREY_200}
+              text="Continuar com o Google"
+            />
+          </View>
+        </View>
+        <StatusBar style="auto" />
       </View>
-      <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
 }

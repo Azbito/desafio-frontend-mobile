@@ -6,14 +6,14 @@ import { Colors } from 'utils/colors';
 import { styles } from './styles';
 import { StatusBar } from 'expo-status-bar';
 
-interface newDeliveryProps {
+interface NewDeliveryProps {
   value: number | string;
   onChangeText: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
   error: string;
   onPress: () => void;
 }
 
-export function NewDelivery({ value, onChangeText, error, onPress }: newDeliveryProps) {
+export function NewDelivery({ value, onChangeText, error, onPress }: NewDeliveryProps) {
   return (
     <View style={styles.container}>
       <Text fontFamily="Poppins" color={Colors.GREY_700} fontSize={16} fontWeight="BOLD">

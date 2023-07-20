@@ -13,5 +13,6 @@ export const styles: OverviewStyleProps = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: SCREEN_WIDTH,
+    marginTop: -64,
   },
 });

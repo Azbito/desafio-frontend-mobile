@@ -1,7 +1,7 @@
 import { Divider } from 'components/Divider';
 import { Text } from 'components/Text';
 import { TopBar } from 'components/TopBar';
-import { BackHandler, Modal, View } from 'react-native';
+import { ScrollView, Modal, View, Dimensions } from 'react-native';
 import { Colors } from 'utils/colors';
 import { styles } from './styles';
 import { Button } from 'components/Button';
@@ -34,13 +34,15 @@ export function NewDeliveryInfos({ onPressClose, idNumber, isOpen }: NewDelivery
     onPressClose();
   }
 
+  const SCREEN_WIDTH = Dimensions.get('screen').width;
+
   return (
     <Modal visible={isOpen} transparent animationType="slide">
-      <View style={{}}>
-        <View style={{ width: '100%' }}>
-          <TopBar onPress={onPressClose} name="Nova entrega" />
-        </View>
+      <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.content}>
+          <View style={{ width: SCREEN_WIDTH }}>
+            <TopBar onPress={onPressClose} name="Nova entrega" />
+          </View>
           <View style={styles.deliveryInfosContainer}>
             <View style={styles.deliveryInfosContent}>
               <Text color={Colors.GREY_300} fontFamily="Poppins" fontWeight="REGULAR" fontSize={14}>
@@ -94,7 +96,7 @@ export function NewDeliveryInfos({ onPressClose, idNumber, isOpen }: NewDelivery
             onPress={rejectDelivery}
           />
         </View>
-      </View>
+      </ScrollView>
     </Modal>
   );
 }

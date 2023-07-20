@@ -8,13 +8,13 @@ import {
   NativeSyntheticEvent,
   TextInputChangeEventData,
   View,
+  ScrollView,
 } from 'react-native';
 import { styles } from './styles';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { NewDeliveryInfos } from 'components/NewDeliveryInfos';
 import { StatusBar } from 'expo-status-bar';
 import { onlyNumbers } from 'utils/onlyNumbers';
-import { BottomBar } from 'components/BottomBar';
 
 export function Overview() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -49,7 +49,7 @@ export function Overview() {
   }, []);
 
   return (
-    <>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <View style={styles.container}>
         <TopBar name="Visão geral" />
         <View
@@ -78,6 +78,6 @@ export function Overview() {
         />
       </View>
       <StatusBar style="auto" />
-    </>
+    </ScrollView>
   );
 }

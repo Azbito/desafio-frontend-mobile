@@ -1,4 +1,4 @@
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleSheet, Dimensions, ViewStyle } from 'react-native';
 import { Colors } from 'utils/colors';
 
 interface NewDeliveryInfosStylesProps {
@@ -17,17 +17,18 @@ interface NewDeliveryInfosStylesProps {
   countorBall: ViewStyle;
 }
 
+const SCREEN_HEIGHT = Dimensions.get('screen').height;
+
 export const styles = StyleSheet.create<NewDeliveryInfosStylesProps>({
   content: {
     width: '100%',
+    height: SCREEN_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
     paddingHorizontal: 35,
     position: 'absolute',
-    marginTop: 50,
     top: 0,
-    zIndex: 2,
     backgroundColor: Colors.WHITE,
   },
   deliveryInfosContainer: {

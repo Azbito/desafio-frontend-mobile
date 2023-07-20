@@ -3,7 +3,6 @@ import { Text } from 'components/Text';
 import { View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { styles } from './styles';
-import { useEffect, useState } from 'react';
 import { useAppSelector } from 'hooks/useAppSelector';
 
 interface deliveryInfosProps {
@@ -49,11 +48,11 @@ export function DeliveriesSummary() {
           fontSize={16}
           fontWeight="BOLD"
         >
-          Resumo das Entregasadsasd
+          Resumo das Entregas
         </Text>
       </View>
       <View style={styles.infosContainer}>
-        {Object.entries(deliveriesInfos).map(([key, value]) => (
+        {Object.entries(deliveriesInfos).map(([_, value]) => (
           <CardAcceptedAmount key={value.id} title={value.title} amount={value.amount} />
         ))}
       </View>

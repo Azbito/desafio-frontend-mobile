@@ -46,6 +46,7 @@ export function BottomBar() {
     <View style={styles.container}>
       {navigations.map((item) => (
         <TouchableOpacity
+          key={item.id}
           onPress={item.path ? () => navigate(item.path ?? '') : () => {}}
           style={styles.content}
         >

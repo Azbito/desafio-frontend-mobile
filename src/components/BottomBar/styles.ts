@@ -20,6 +20,7 @@ export const styles: BottomBarStylesProps = StyleSheet.create({
     width: SCREEN_WIDTH,
     paddingTop: 11,
     paddingBottom: 25,
+    zIndex: 1,
   },
   content: {
     width: '30%',
