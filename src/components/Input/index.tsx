@@ -18,41 +18,43 @@ export function Input({ isConfidential, label, width, error = '', ...props }: In
 
   if (isConfidential) {
     return (
-      <View style={{ position: 'absolute', width }}>
-        {label && (
-          <Text
-            color={Colors.GREY_500}
-            fontFamily="Poppins"
-            fontWeight="REGULAR"
-            fontSize={13}
-            marginTop={16}
-          >
-            {label}
-          </Text>
-        )}
-        <View style={styles.confidentialInputContainer}>
-          <TextInput
-            style={styles.confidentialInput}
-            textContentType="password"
-            secureTextEntry={isHidden}
-            maxLength={props.maxLength ?? 240}
-            {...props}
-          />
-          {isHidden ? (
-            <TouchableOpacity onPress={() => setIsHidden(!isHidden)}>
-              <Icon style={styles.eye} name="eye-off" size={24} color={Colors.ORANGE_600} />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity onPress={() => setIsHidden(!isHidden)}>
-              <Icon style={styles.eye} name="eye" size={24} color={Colors.ORANGE_600} />
-            </TouchableOpacity>
+      <View style={{ width }}>
+        <View style={{ width }}>
+          {label && (
+            <Text
+              color={Colors.GREY_500}
+              fontFamily="Poppins"
+              fontWeight="REGULAR"
+              fontSize={13}
+              marginTop={16}
+            >
+              {label}
+            </Text>
+          )}
+          <View style={styles.confidentialInputContainer}>
+            <TextInput
+              style={styles.confidentialInput}
+              textContentType="password"
+              secureTextEntry={isHidden}
+              maxLength={props.maxLength ?? 240}
+              {...props}
+            />
+            {isHidden ? (
+              <TouchableOpacity onPress={() => setIsHidden(!isHidden)}>
+                <Icon style={styles.eye} name="eye-off" size={24} color={Colors.ORANGE_600} />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={() => setIsHidden(!isHidden)}>
+                <Icon style={styles.eye} name="eye" size={24} color={Colors.ORANGE_600} />
+              </TouchableOpacity>
+            )}
+          </View>
+          {error && (
+            <Text fontFamily="Poppins" color={Colors.RED_600} fontWeight="REGULAR" fontSize={10}>
+              {error}
+            </Text>
           )}
         </View>
-        {error && (
-          <Text fontFamily="Poppins" color={Colors.RED_600} fontWeight="REGULAR" fontSize={10}>
-            {error}
-          </Text>
-        )}
       </View>
     );
   }

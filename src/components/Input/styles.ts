@@ -22,14 +22,14 @@ export const inputStyles = ({ hasError }: { hasError: boolean }): InputStylesPro
     eye: {
       position: 'absolute',
       right: 16,
-      top: -42,
+      top: -35,
     },
     confidentialInput: {
       fontFamily: 'Roboto',
       letterSpacing: 2.8,
       fontSize: 14,
       borderWidth: 1,
-      borderColor: hasError ? Colors.RED_600 : Colors.ORANGE_700,
+      borderColor: hasError ? Colors.RED_600 : Colors.ORANGE_800,
       borderRadius: 16,
       width: '100%',
       height: 44,
@@ -39,12 +39,11 @@ export const inputStyles = ({ hasError }: { hasError: boolean }): InputStylesPro
     input: {
       fontFamily: 'Poppins-Regular',
       borderWidth: 1,
-      borderColor: hasError ? Colors.RED_600 : Colors.ORANGE_700,
+      borderColor: hasError ? Colors.RED_600 : Colors.ORANGE_800,
       borderRadius: 16,
       width: '100%',
       height: 44,
       paddingHorizontal: 17,
-      paddingVertical: 15,
     },
   });
 
