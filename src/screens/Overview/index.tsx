@@ -2,9 +2,15 @@ import { DaysEarning } from 'components/DaysEarning';
 import { DeliveriesSummary } from 'components/DeliveriesSummary';
 import { NewDelivery } from 'components/NewDelivery';
 import { TopBar } from 'components/TopBar';
-import { Keyboard, NativeSyntheticEvent, TextInputChangeEventData, View } from 'react-native';
+import {
+  BackHandler,
+  Keyboard,
+  NativeSyntheticEvent,
+  TextInputChangeEventData,
+  View,
+} from 'react-native';
 import { styles } from './styles';
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { NewDeliveryInfos } from 'components/NewDeliveryInfos';
 import { StatusBar } from 'expo-status-bar';
 import { onlyNumbers } from 'utils/onlyNumbers';
@@ -28,6 +34,18 @@ export function Overview() {
     Keyboard.dismiss();
     setIsOpenModal(true);
   }
+
+  function handleCloseModal() {
+    setIsOpenModal(false);
+    return true;
+  }
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', handleCloseModal);
+    return () => {
+      BackHandler.removeEventListener('hardwareBackPress', handleCloseModal);
+    };
+  }, []);
 
   return (
     <View style={styles.container}>

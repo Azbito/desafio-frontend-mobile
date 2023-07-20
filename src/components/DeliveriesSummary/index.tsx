@@ -38,7 +38,7 @@ export function DeliveriesSummary() {
       amount: deliveries.accepted + deliveries.rejected,
     },
   };
-  console.log(JSON.stringify(deliveries));
+
   return (
     <View style={styles.container}>
       <View>

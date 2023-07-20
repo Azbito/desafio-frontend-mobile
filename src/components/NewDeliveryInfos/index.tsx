@@ -1,16 +1,17 @@
 import { Divider } from 'components/Divider';
 import { Text } from 'components/Text';
 import { TopBar } from 'components/TopBar';
-import { Modal, View } from 'react-native';
+import { BackHandler, Modal, View } from 'react-native';
 import { Colors } from 'utils/colors';
 import { styles } from './styles';
 import { Button } from 'components/Button';
 import { DeliveryDistance } from 'components/DeliveryDistance';
 import { DeliveryTrack } from 'components/DeliveryTrack';
 import { useDispatch } from 'react-redux';
-import { setAccepted, setRejected } from 'features/auth-slice';
+import { setAccepted, setRejected } from 'features/deliveries-slice';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { formattedBRL } from 'utils/formattedBRL';
+import { useLayoutEffect, useState } from 'react';
 
 interface NewDeliveryInfosProp {
   onPressClose: () => void;
@@ -19,7 +20,7 @@ interface NewDeliveryInfosProp {
 }
 
 export function NewDeliveryInfos({ onPressClose, idNumber, isOpen }: NewDeliveryInfosProp) {
-  const value = 13.75;
+  const payment = 13.75;
 
   const dispatch = useDispatch();
 
@@ -70,7 +71,7 @@ export function NewDeliveryInfos({ onPressClose, idNumber, isOpen }: NewDelivery
               fontSize={35}
               marginBottom={35}
             >
-              {formattedBRL(value)}
+              {formattedBRL(payment)}
             </Text>
           </View>
           <DeliveryDistance />

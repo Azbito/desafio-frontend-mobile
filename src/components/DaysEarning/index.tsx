@@ -8,10 +8,11 @@ import { styles } from './style';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from 'utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useAppSelector } from 'hooks/useAppSelector';
 
 export function DaysEarning() {
-  const [earnedCash, setEarnedCash] = useState<number>(150);
   const [isHidden, setIsHidden] = useState<boolean>(false);
+  const wallet = 150;
 
   return (
     <View style={styles.container}>
@@ -27,7 +28,7 @@ export function DaysEarning() {
           </Text>
           {!isHidden ? (
             <Text color={Colors.WHITE} fontFamily="Roboto" fontSize={30} fontWeight="BOLD">
-              {formattedBRL(earnedCash)}
+              {formattedBRL(wallet)}
             </Text>
           ) : (
             <View style={styles.hiddenValueContainer}>
