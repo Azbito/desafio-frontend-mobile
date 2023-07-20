@@ -33,6 +33,7 @@ export function Login() {
   function handleSetErrors(prop: 'login' | 'password', message: string) {
     setErrors((prevState) => ({ ...prevState, [prop]: message }));
   }
+
   function handleChange(
     prop: 'login' | 'password',
     event: NativeSyntheticEvent<TextInputChangeEventData>
@@ -68,22 +69,18 @@ export function Login() {
         Para entregadores
       </Text>
       <View style={styles.loginContainer}>
-        <Text
-          fontFamily="Poppins"
-          fontWeight="SEMIBOLD"
-          fontSize={16}
-          color={Colors.GREY_600}
-          marginTop={32}
-        >
+        <Text fontFamily="Poppins" fontWeight="SEMIBOLD" fontSize={16} color={Colors.GREY_600}>
           Login
         </Text>
         <Input
+          width="100%"
           value={fields.login}
           onChange={(text) => handleChange('login', text)}
           error={errors.login}
           label="Email ou Telefone"
         />
         <Input
+          width="100%"
           value={fields.password}
           error={errors.password}
           onChange={(text) => handleChange('password', text)}

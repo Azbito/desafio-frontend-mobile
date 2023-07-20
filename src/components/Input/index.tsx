@@ -9,7 +9,7 @@ interface InputProps extends TextInputProps {
   isConfidential?: boolean;
   label?: string;
   error?: string;
-  width: number | string;
+  width?: number | string;
 }
 
 export function Input({ isConfidential, label, width, error = '', ...props }: InputProps) {

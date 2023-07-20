@@ -16,7 +16,7 @@ export function DaysEarning() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={[Colors.ORANGE_500, Colors.ORANGE_700]}
+        colors={[Colors.ORANGE_500, Colors.ORANGE_800]}
         start={{ x: 0, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         style={styles.gradientContainer}

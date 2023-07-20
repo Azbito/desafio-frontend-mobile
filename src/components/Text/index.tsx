@@ -14,6 +14,7 @@ interface TextProps extends TextPropsAndroid {
   color: string;
   fontSize: number;
   textAlign?: 'center' | 'left' | 'right';
+  width?: number | string;
 }
 
 export function Text({
@@ -27,6 +28,7 @@ export function Text({
   textDecorationLine,
   children,
   textAlign,
+  width,
   ...props
 }: TextProps) {
   const font: any = fontFamily == 'Poppins' ? Poppins : Roboto;
@@ -42,6 +44,7 @@ export function Text({
         marginVertical,
         textDecorationLine,
         textAlign,
+        width,
       }}
       {...props}
     >

@@ -1,9 +1,13 @@
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { NewDeliveryInfos } from 'components/NewDeliveryInfos';
 import { AuthGoogleContext, AuthGoogleProvider } from 'contexts/authGoogle';
 import { useFonts } from 'expo-font';
+import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar';
 import { useContext } from 'react';
+import { Provider } from 'react-redux';
 import { Login } from 'screens/Login';
 import { Overview } from 'screens/Overview';
+import { store } from 'store';
 
 export default function App() {
   GoogleSignin.configure({
@@ -23,5 +27,10 @@ export default function App() {
     return undefined;
   }
 
-  return <AuthGoogleProvider>{!isSigned && <Overview />}</AuthGoogleProvider>;
+  return (
+    <Provider store={store}>
+      <ExpoStatusBar style="dark" />
+      <AuthGoogleProvider>{!isSigned && <Overview />}</AuthGoogleProvider>
+    </Provider>
+  );
 }

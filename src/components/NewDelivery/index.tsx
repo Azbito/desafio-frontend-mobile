@@ -1,11 +1,19 @@
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { Text } from 'components/Text';
-import { View } from 'react-native';
+import { NativeSyntheticEvent, TextInputChangeEventData, View } from 'react-native';
 import { Colors } from 'utils/colors';
 import { styles } from './styles';
+import { StatusBar } from 'expo-status-bar';
 
-export function NewDelivery() {
+interface newDeliveryProps {
+  value: number | string;
+  onChangeText: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
+  error: string;
+  onPress: () => void;
+}
+
+export function NewDelivery({ value, onChangeText, error, onPress }: newDeliveryProps) {
   return (
     <View style={styles.container}>
       <Text fontFamily="Poppins" color={Colors.GREY_700} fontSize={16} fontWeight="BOLD">
@@ -22,8 +30,15 @@ export function NewDelivery() {
         Número de identificação
       </Text>
       <View style={styles.inputInfoContainer}>
-        <Input width="76%" />
-        <Button width="20%" text="OK" isOrange />
+        <Input
+          width="77%"
+          value={value.toString()}
+          onChange={onChangeText}
+          keyboardType="numeric"
+          maxLength={6}
+          error={error}
+        />
+        <Button width="20%" text="OK" isOrange onPress={onPress} />
       </View>
       <View style={styles.buttonContainer}>
         <Button
@@ -34,6 +49,7 @@ export function NewDelivery() {
           isOrange
         />
       </View>
+      <StatusBar style="auto" />
     </View>
   );
 }

@@ -1,7 +1,8 @@
 export enum Colors {
   ORANGE_500 = '#FF881F',
   ORANGE_600 = '#FF671F',
-  ORANGE_700 = '#FA641E',
+  ORANGE_700 = '#FA641F',
+  ORANGE_800 = '#FA641E',
 
   RED_500 = '#E8453E',
   RED_600 = '#ff0000',

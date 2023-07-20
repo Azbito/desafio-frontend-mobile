@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { styles } from './styles';
 import { useEffect, useState } from 'react';
+import { useAppSelector } from 'hooks/useAppSelector';
 
 interface deliveryInfosProps {
   id: number;
@@ -18,24 +19,26 @@ interface deliveriesInfosProps {
 }
 
 export function DeliveriesSummary() {
-  const [deliveriesInfos, setDeliveriesInfos] = useState<deliveriesInfosProps>({
+  const deliveries = useAppSelector((state) => state.deliveries);
+
+  const deliveriesInfos: deliveriesInfosProps = {
     accepted: {
       id: 1,
       title: 'Aceitas',
-      amount: 15,
+      amount: deliveries.accepted,
     },
     rejected: {
       id: 2,
       title: 'Rejeitadas',
-      amount: 5,
+      amount: deliveries.rejected,
     },
     total: {
       id: 3,
       title: 'Total',
-      amount: 0,
+      amount: deliveries.accepted + deliveries.rejected,
     },
-  });
-
+  };
+  console.log(JSON.stringify(deliveries));
   return (
     <View style={styles.container}>
       <View>
@@ -46,20 +49,12 @@ export function DeliveriesSummary() {
           fontSize={16}
           fontWeight="BOLD"
         >
-          Resumo das Entregas
+          Resumo das Entregasadsasd
         </Text>
       </View>
       <View style={styles.infosContainer}>
         {Object.entries(deliveriesInfos).map(([key, value]) => (
-          <CardAcceptedAmount
-            key={value.id}
-            title={value.title}
-            amount={
-              value.title == 'Total'
-                ? deliveriesInfos.accepted.amount + deliveriesInfos.rejected.amount ?? 0
-                : value.amount
-            }
-          />
+          <CardAcceptedAmount key={value.id} title={value.title} amount={value.amount} />
         ))}
       </View>
     </View>

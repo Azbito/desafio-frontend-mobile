@@ -13,7 +13,8 @@ interface ButtonProps extends TouchableOpacityProps {
   isReject?: boolean;
   borderColor?: string;
   iconGallery?: 'MaterialCommunityIcons' | 'Feather';
-  width: string | number;
+  width?: string | number;
+  marginTop?: number;
 }
 
 export function Button({
@@ -22,6 +23,7 @@ export function Button({
   iconName,
   isOrange = false,
   width,
+  marginTop,
   ...props
 }: ButtonProps) {
   const Icon = iconGallery == 'MaterialCommunityIcons' ? MaterialCommunityIcon : FeatherIcon;
@@ -32,10 +34,10 @@ export function Button({
       <TouchableOpacity {...props}>
         {isOrange ? (
           <LinearGradient
-            colors={[Colors.ORANGE_700, Colors.ORANGE_500]}
+            colors={[Colors.ORANGE_500, Colors.ORANGE_800]}
             start={{ x: 0, y: 0 }}
             end={{ x: 0.5, y: 1 }}
-            style={[styles.gradient, { gap: iconName ? 8 : 0, width }]}
+            style={[styles.gradient, { gap: iconName ? 8 : 0, width, marginTop }]}
           >
             {iconName && (
               <Icon style={{ color: Colors.WHITE, marginBottom: 4 }} size={24} name={iconName} />
@@ -45,7 +47,7 @@ export function Button({
             </Text>
           </LinearGradient>
         ) : (
-          <View style={styles.notOrangeContent}>
+          <View style={[styles.notOrangeContent, { marginTop }]}>
             {iconName && (
               <Icon style={{ color: Colors.RED_500, marginBottom: 4 }} size={24} name={iconName} />
             )}
