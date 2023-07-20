@@ -14,6 +14,7 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { NewDeliveryInfos } from 'components/NewDeliveryInfos';
 import { StatusBar } from 'expo-status-bar';
 import { onlyNumbers } from 'utils/onlyNumbers';
+import { BottomBar } from 'components/BottomBar';
 
 export function Overview() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -48,34 +49,35 @@ export function Overview() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <TopBar name="Visão geral" />
-      <View
-        style={{
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          paddingHorizontal: 35,
-        }}
-      >
-        <DaysEarning />
-        <DeliveriesSummary />
-        <NewDelivery
-          value={idNumberInfo}
-          onChangeText={handleInputChange}
-          onPress={startNewDelivery}
-          error={error}
+    <>
+      <View style={styles.container}>
+        <TopBar name="Visão geral" />
+        <View
+          style={{
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            paddingHorizontal: 35,
+          }}
+        >
+          <DaysEarning />
+          <DeliveriesSummary />
+          <NewDelivery
+            value={idNumberInfo}
+            onChangeText={handleInputChange}
+            onPress={startNewDelivery}
+            error={error}
+          />
+        </View>
+
+        <NewDeliveryInfos
+          isOpen={isOpenModal}
+          idNumber={String(idNumberInfo)}
+          onPressClose={() => setIsOpenModal(false)}
         />
       </View>
-
-      <NewDeliveryInfos
-        isOpen={isOpenModal}
-        idNumber={String(idNumberInfo)}
-        onPressClose={() => setIsOpenModal(false)}
-      />
-
       <StatusBar style="auto" />
-    </View>
+    </>
   );
 }

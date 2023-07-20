@@ -1,7 +1,15 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 import { Colors } from 'utils/colors';
 
-export const styles = StyleSheet.create({
+interface OverviewStyleProps {
+  container: ViewStyle;
+  loginContainer: ViewStyle;
+  loginWithContainer: ViewStyle;
+  loginWithContent: ViewStyle;
+  signUpContainer: ViewStyle;
+  googleContainer: ViewStyle;
+}
+export const styles: OverviewStyleProps = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,

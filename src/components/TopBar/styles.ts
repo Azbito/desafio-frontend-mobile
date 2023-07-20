@@ -1,4 +1,4 @@
-import { StyleSheet, View, ViewStyle, useColorScheme } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 import { Colors } from 'utils/colors';
 
 interface TopBarStylesProps {
@@ -10,20 +10,21 @@ interface TopBarStylesProps {
 
 export const styles = StyleSheet.create<TopBarStylesProps>({
   container: {
-    marginTop: 50,
     flexDirection: 'row',
     position: 'relative',
     width: '100%',
     backgroundColor: Colors.WHITE,
     justifyContent: 'center',
+    marginTop: 64,
   },
   iconContainer: {
+    left: 16,
     position: 'absolute',
     zIndex: 5,
-    left: 16,
   },
   icon: {
     color: Colors.ORANGE_800,
+    alignSelf: 'center',
   },
   textContainer: {
     flex: 1,

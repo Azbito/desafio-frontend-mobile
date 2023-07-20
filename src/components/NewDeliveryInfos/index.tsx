@@ -36,8 +36,8 @@ export function NewDeliveryInfos({ onPressClose, idNumber, isOpen }: NewDelivery
 
   return (
     <Modal visible={isOpen} transparent animationType="slide">
-      <View style={{ position: 'relative' }}>
-        <View style={{ zIndex: 3, position: 'absolute', top: -40, width: '100%' }}>
+      <View style={{}}>
+        <View style={{ width: '100%' }}>
           <TopBar onPress={onPressClose} name="Nova entrega" />
         </View>
         <View style={styles.content}>

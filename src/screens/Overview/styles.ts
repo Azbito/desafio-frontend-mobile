@@ -1,9 +1,13 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet, ViewStyle } from 'react-native';
 import { Colors } from 'utils/colors';
+
+interface OverviewStyleProps {
+  container: ViewStyle;
+}
 
 const SCREEN_WIDTH = Dimensions.get('screen').width;
 
-export const styles = StyleSheet.create({
+export const styles: OverviewStyleProps = StyleSheet.create({
   container: {
     backgroundColor: Colors.WHITE,
     alignItems: 'center',
