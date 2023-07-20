@@ -49,7 +49,7 @@ export function BottomBar() {
           onPress={item.path ? () => navigate(item.path ?? '') : () => {}}
           style={styles.content}
         >
-          {item.hasNotification && <View style={styles.notification} />}
+          {item.hasNotification && !item.isActive && <View style={styles.notification} />}
           <Icon
             color={item.isActive ? Colors.ORANGE_800 : Colors.GREY_200}
             size={28}
@@ -62,7 +62,7 @@ export function BottomBar() {
             fontWeight="REGULAR"
             fontSize={15}
           >
-            {item.title}
+            {item.title === 'Relatórios' && item.hasNotification ? 'Pedidos' : item.title}
           </Text>
         </TouchableOpacity>
       ))}
