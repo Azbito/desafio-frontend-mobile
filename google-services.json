@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "81507098020",
+    "project_id": "desafio-pigz",
+    "storage_bucket": "desafio-pigz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81507098020:android:3137d9ed2d4e94ccdaf531",
+        "android_client_info": {
+          "package_name": "com.desafioPigz.GoogleExpo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81507098020-en79l5omtk7c48nrcd4slvmiarnk0dec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.desafioPigz.GoogleExpo",
+            "certificate_hash": "901af976bcfe089365f6137fb7624d710999de64"
+          }
+        },
+        {
+          "client_id": "81507098020-fglaesorojemkk1rurdtseq0ed6dbd8n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.desafioPigz.GoogleExpo",
+            "certificate_hash": "db2eccccb2605b974993e8e2a3023173c5aadfa2"
+          }
+        },
+        {
+          "client_id": "81507098020-0nv9kl5nogbithfgmur0u3e7r6sqi0sc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDusSyrmBIO-t22-SkQtPXhqK33RhuWbtg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81507098020-0nv9kl5nogbithfgmur0u3e7r6sqi0sc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
