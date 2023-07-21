@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "desafio-frontend-mobile-pigz",
+    "name": "Pigz",
     "slug": "desafio-frontend-mobile-pigz",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FA641E"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -21,7 +21,7 @@
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#FA641E"
       },
       "package": "com.desafioPigz.GoogleExpo"
     },

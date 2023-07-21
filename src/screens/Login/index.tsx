@@ -59,7 +59,7 @@ export function Login() {
 
     if ((!isValidEmail(fields.login) && !isValidPhoneNumber(fields.login)) || isEmptyPassword) {
       if (!isValidPhoneNumber(fields.login) && !isValidEmail(fields.login)) {
-        handleSetErrors('login', 'Preencha com um email ou número de telefone válido');
+        handleSetErrors('login', 'Preencha com um email ou número de telefone válido.');
       }
 
       if (isEmptyPassword) {

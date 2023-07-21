@@ -18,7 +18,7 @@ export const styles = StyleSheet.create<DeliveryTrackStylesProps>({
   },
   horizontalDivider: {
     width: 1,
-    height: 192,
+    height: '84%',
     position: 'absolute',
     left: 25,
     backgroundColor: Colors.GREY_300,
@@ -28,18 +28,21 @@ export const styles = StyleSheet.create<DeliveryTrackStylesProps>({
     height: 15,
     borderRadius: 50,
     backgroundColor: 'red',
-    marginLeft: 18.5,
+    marginLeft: 18.2,
     marginRight: 9,
   },
   deliveryLocation: {
     flexDirection: 'row',
     alignItems: 'center',
+    width: '100%',
     marginTop: 39,
   },
   deliveryAdress: {
     marginTop: 6,
     flexDirection: 'row',
     alignItems: 'center',
+    width: '100%',
+    flexShrink: 1,
   },
   countorBall: {
     marginRight: 9,

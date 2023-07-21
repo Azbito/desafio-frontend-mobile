@@ -22,9 +22,9 @@ export function DeliveryTrack() {
         </View>
         <View style={styles.deliveryAdress}>
           <View style={styles.countorBall} />
-          <View>
+          <View style={{ marginLeft: 2 }}>
             <Text
-              width="98%"
+              width="95%"
               color={Colors.GREY_300}
               fontFamily="Poppins"
               fontSize={14}
@@ -32,13 +32,7 @@ export function DeliveryTrack() {
             >
               Restaurante Recanto da Peixada
             </Text>
-            <Text
-              width="98%"
-              color={Colors.GREY_300}
-              fontFamily="Poppins"
-              fontSize={14}
-              fontWeight="MEDIUM"
-            >
+            <Text color={Colors.GREY_300} fontFamily="Poppins" fontSize={14} fontWeight="MEDIUM">
               Distância: 2km
             </Text>
           </View>
@@ -56,9 +50,9 @@ export function DeliveryTrack() {
         </View>
         <View style={styles.deliveryAdress}>
           <View style={styles.countorBall} />
-          <View>
+          <View style={{ marginLeft: 2 }}>
             <Text
-              width="98%"
+              width="95%"
               color={Colors.GREY_300}
               fontFamily="Poppins"
               fontSize={14}
