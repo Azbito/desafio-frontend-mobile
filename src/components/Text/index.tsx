@@ -11,7 +11,7 @@ interface TextProps extends TextPropsAndroid {
   marginVertical?: number;
   paddingRight?: number;
   textDecorationLine?: 'underline' | 'none';
-  color: string;
+  color?: string;
   fontSize: number;
   textAlign?: 'center' | 'left' | 'right';
   width?: number | string;

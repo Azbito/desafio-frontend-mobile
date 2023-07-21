@@ -14,6 +14,7 @@ export const styles = StyleSheet.create<DeliveryTrackStylesProps>({
   deliveryLocationContainer: {
     position: 'relative',
     width: '100%',
+    flex: 1,
   },
   horizontalDivider: {
     width: 1,

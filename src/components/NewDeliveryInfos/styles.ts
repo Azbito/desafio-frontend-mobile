@@ -21,14 +21,9 @@ const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
 export const styles = StyleSheet.create<NewDeliveryInfosStylesProps>({
   content: {
-    width: '100%',
     height: SCREEN_HEIGHT,
-    alignItems: 'center',
-    justifyContent: 'center',
     flexDirection: 'column',
-    paddingHorizontal: 35,
-    position: 'absolute',
-    top: 0,
+    width: '100%',
     backgroundColor: Colors.WHITE,
   },
   deliveryInfosContainer: {

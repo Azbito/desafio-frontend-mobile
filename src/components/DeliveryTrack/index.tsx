@@ -1,6 +1,6 @@
 import { Text } from 'components/Text';
 import { LinearGradient } from 'expo-linear-gradient';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { styles } from './styles';
 import { Colors } from 'utils/colors';
 
@@ -23,10 +23,22 @@ export function DeliveryTrack() {
         <View style={styles.deliveryAdress}>
           <View style={styles.countorBall} />
           <View>
-            <Text color={Colors.GREY_300} fontFamily="Poppins" fontSize={14} fontWeight="MEDIUM">
+            <Text
+              width="98%"
+              color={Colors.GREY_300}
+              fontFamily="Poppins"
+              fontSize={14}
+              fontWeight="MEDIUM"
+            >
               Restaurante Recanto da Peixada
             </Text>
-            <Text color={Colors.GREY_300} fontFamily="Poppins" fontSize={14} fontWeight="MEDIUM">
+            <Text
+              width="98%"
+              color={Colors.GREY_300}
+              fontFamily="Poppins"
+              fontSize={14}
+              fontWeight="MEDIUM"
+            >
               Distância: 2km
             </Text>
           </View>
@@ -45,7 +57,13 @@ export function DeliveryTrack() {
         <View style={styles.deliveryAdress}>
           <View style={styles.countorBall} />
           <View>
-            <Text color={Colors.GREY_300} fontFamily="Poppins" fontSize={14} fontWeight="MEDIUM">
+            <Text
+              width="98%"
+              color={Colors.GREY_300}
+              fontFamily="Poppins"
+              fontSize={14}
+              fontWeight="MEDIUM"
+            >
               Av: Cabo dos Soldados - Caranã
             </Text>
             <Text color={Colors.GREY_300} fontFamily="Poppins" fontSize={14} fontWeight="MEDIUM">

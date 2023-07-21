@@ -13,7 +13,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { styles } from './styles';
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { AuthGoogleContext } from 'contexts/authGoogle';
 import { isValidEmail } from 'utils/isValidEmail';
 import { isValidPhoneNumber } from 'utils/isValidPhoneNumber';
@@ -24,7 +24,9 @@ interface FieldsProps {
 }
 
 export function Login() {
-  const { onGoogleButtonPress } = useContext(AuthGoogleContext);
+  const { onGoogleButtonPress, setIsSigned, isSigned } = useContext(AuthGoogleContext);
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [fields, setFields] = useState<FieldsProps>({
     login: '',
@@ -55,7 +57,7 @@ export function Login() {
   function handleLogin() {
     const isEmptyPassword = !fields.password;
 
-    if (!isValidEmail(fields.login) || !isValidPhoneNumber(fields.login) || isEmptyPassword) {
+    if ((!isValidEmail(fields.login) && !isValidPhoneNumber(fields.login)) || isEmptyPassword) {
       if (!isValidPhoneNumber(fields.login) && !isValidEmail(fields.login)) {
         handleSetErrors('login', 'Preencha com um email ou número de telefone válido');
       }
@@ -66,17 +68,35 @@ export function Login() {
 
       return;
     }
+
+    fakeLoading();
+  }
+
+  function fakeLoading() {
+    const TWO_SECONDS = 1000 * 2;
+
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSigned(true);
+    }, TWO_SECONDS);
   }
 
   return (
-    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+    <ScrollView>
       <View style={styles.container}>
         <Image source={require('../../../assets/images/logo.png')} />
         <Text fontFamily="Poppins" fontWeight="SEMIBOLD" fontSize={18} color={Colors.GREY_600}>
           Para entregadores
         </Text>
         <View style={styles.loginContainer}>
-          <Text fontFamily="Poppins" fontWeight="SEMIBOLD" fontSize={16} color={Colors.GREY_600}>
+          <Text
+            marginTop={37}
+            fontFamily="Poppins"
+            fontWeight="SEMIBOLD"
+            fontSize={16}
+            color={Colors.GREY_600}
+          >
             Login
           </Text>
           <Input
@@ -93,6 +113,7 @@ export function Login() {
             onChange={(text) => handleChange('password', text)}
             isConfidential
             label="Senha"
+            onSubmitEditing={handleLogin}
           />
           <Text
             fontFamily="Poppins"
@@ -105,7 +126,7 @@ export function Login() {
             Esqueci minha senha
           </Text>
         </View>
-        <Button onPress={handleLogin} text="Entrar" isOrange />
+        <Button onPress={handleLogin} text="Entrar" isOrange isLoading={isLoading} />
         <View style={styles.signUpContainer}>
           <Text fontFamily="Poppins" fontWeight="REGULAR" color={Colors.GREY_400} fontSize={13}>
             Não tem uma Conta?

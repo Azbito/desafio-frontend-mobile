@@ -12,6 +12,7 @@ import { setAccepted, setRejected } from 'features/deliveries-slice';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { formattedBRL } from 'utils/formattedBRL';
 import { useLayoutEffect, useState } from 'react';
+import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar';
 
 interface NewDeliveryInfosProp {
   onPressClose: () => void;
@@ -38,11 +39,19 @@ export function NewDeliveryInfos({ onPressClose, idNumber, isOpen }: NewDelivery
 
   return (
     <Modal visible={isOpen} transparent animationType="slide">
-      <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.content}>
-          <View style={{ width: SCREEN_WIDTH }}>
-            <TopBar onPress={onPressClose} name="Nova entrega" />
-          </View>
+      <ExpoStatusBar style="dark" backgroundColor={Colors.WHITE} />
+      <View style={styles.content}>
+        <View style={{ width: SCREEN_WIDTH, marginTop: -16, paddingTop: 5 }}>
+          <TopBar onPress={onPressClose} name="Nova entrega" />
+        </View>
+        <ScrollView
+          contentContainerStyle={{
+            width: '100%',
+            justifyContent: 'center',
+            paddingHorizontal: 35,
+            paddingBottom: 183,
+          }}
+        >
           <View style={styles.deliveryInfosContainer}>
             <View style={styles.deliveryInfosContent}>
               <Text color={Colors.GREY_300} fontFamily="Poppins" fontWeight="REGULAR" fontSize={14}>
@@ -93,10 +102,11 @@ export function NewDeliveryInfos({ onPressClose, idNumber, isOpen }: NewDelivery
             marginTop={15}
             text="Rejeitar"
             width="100%"
+            color={Colors.RED_500}
             onPress={rejectDelivery}
           />
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </Modal>
   );
 }

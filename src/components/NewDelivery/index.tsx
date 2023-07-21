@@ -37,6 +37,7 @@ export function NewDelivery({ value, onChangeText, error, onPress }: NewDelivery
           keyboardType="numeric"
           maxLength={6}
           error={error}
+          onSubmitEditing={onPress}
         />
         <Button width="20%" text="OK" isOrange onPress={onPress} />
       </View>

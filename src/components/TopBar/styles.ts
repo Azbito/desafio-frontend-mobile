@@ -15,6 +15,7 @@ export const styles = StyleSheet.create<TopBarStylesProps>({
     width: '100%',
     backgroundColor: Colors.WHITE,
     justifyContent: 'center',
+    marginTop: 16,
   },
   iconContainer: {
     left: 16,

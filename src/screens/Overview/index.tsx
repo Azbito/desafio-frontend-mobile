@@ -49,35 +49,36 @@ export function Overview() {
   }, []);
 
   return (
-    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-      <View style={styles.container}>
-        <TopBar name="Visão geral" />
-        <View
-          style={{
-            width: '100%',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            paddingHorizontal: 35,
-          }}
-        >
-          <DaysEarning />
-          <DeliveriesSummary />
-          <NewDelivery
-            value={idNumberInfo}
-            onChangeText={handleInputChange}
-            onPress={startNewDelivery}
-            error={error}
-          />
+    <>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container}>
+          <TopBar name="Visão geral" />
+          <View
+            style={{
+              width: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column',
+              paddingHorizontal: 35,
+            }}
+          >
+            <DaysEarning />
+            <DeliveriesSummary />
+            <NewDelivery
+              value={idNumberInfo}
+              onChangeText={handleInputChange}
+              onPress={startNewDelivery}
+              error={error}
+            />
+          </View>
         </View>
-
-        <NewDeliveryInfos
-          isOpen={isOpenModal}
-          idNumber={String(idNumberInfo)}
-          onPressClose={() => setIsOpenModal(false)}
-        />
-      </View>
-      <StatusBar style="auto" />
-    </ScrollView>
+        <StatusBar style="auto" />
+      </ScrollView>
+      <NewDeliveryInfos
+        isOpen={isOpenModal}
+        idNumber={String(idNumberInfo)}
+        onPressClose={() => setIsOpenModal(false)}
+      />
+    </>
   );
 }

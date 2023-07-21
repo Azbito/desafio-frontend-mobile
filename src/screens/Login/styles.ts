@@ -19,6 +19,7 @@ export const styles: OverviewStyleProps = StyleSheet.create({
     justifyContent: 'center',
     width: SCREEN_WIDTH,
     paddingHorizontal: 24,
+    paddingVertical: 90,
   },
   loginContainer: {
     width: '100%',

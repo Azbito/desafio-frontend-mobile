@@ -1,10 +1,10 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps, View, ActivityIndicator } from 'react-native';
 import { Text } from 'components/Text';
 import { Colors } from 'utils/colors';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { buttonStylesColor } from './styles';
+import { styles } from './styles';
 
 interface ButtonProps extends TouchableOpacityProps {
   text: string;
@@ -15,6 +15,8 @@ interface ButtonProps extends TouchableOpacityProps {
   iconGallery?: 'MaterialCommunityIcons' | 'Feather';
   width?: string | number;
   marginTop?: number;
+  isLoading?: boolean;
+  color?: string;
 }
 
 export function Button({
@@ -24,14 +26,15 @@ export function Button({
   isOrange = false,
   width,
   marginTop,
+  isLoading = false,
+  color,
   ...props
 }: ButtonProps) {
   const Icon = iconGallery == 'MaterialCommunityIcons' ? MaterialCommunityIcon : FeatherIcon;
-  const styles = buttonStylesColor(isOrange);
 
   return (
     <View style={styles.buttonContainer}>
-      <TouchableOpacity {...props}>
+      <TouchableOpacity onPress={isLoading ? () => {} : props.onPress} {...props}>
         {isOrange ? (
           <LinearGradient
             colors={[Colors.ORANGE_500, Colors.ORANGE_800]}
@@ -39,27 +42,48 @@ export function Button({
             end={{ x: 0.5, y: 1 }}
             style={[styles.gradient, { gap: iconName ? 8 : 0, width, marginTop }]}
           >
-            {iconName && (
-              <Icon style={{ color: Colors.WHITE, marginBottom: 4 }} size={24} name={iconName} />
-            )}
-            <Text color={Colors.WHITE} fontFamily={'Poppins'} fontWeight="REGULAR" fontSize={16}>
-              {text}
-            </Text>
+            <>
+              {isLoading ? (
+                <ActivityIndicator size="large" color={Colors.WHITE} />
+              ) : (
+                <>
+                  {iconName && (
+                    <Icon
+                      style={{ color: Colors.WHITE, marginBottom: 4 }}
+                      size={24}
+                      name={iconName}
+                    />
+                  )}
+                  <Text
+                    color={Colors.WHITE}
+                    fontFamily={'Poppins'}
+                    fontWeight="REGULAR"
+                    fontSize={16}
+                  >
+                    {text}
+                  </Text>
+                </>
+              )}
+            </>
           </LinearGradient>
         ) : (
-          <View style={[styles.notOrangeContent, { marginTop }]}>
-            {iconName && (
-              <Icon style={{ color: Colors.RED_500, marginBottom: 4 }} size={24} name={iconName} />
+          <View style={[styles.notOrangeContent, { marginTop, borderColor: color }]}>
+            {isLoading ? (
+              <ActivityIndicator size="large" color={color} />
+            ) : (
+              <>
+                {iconName && <Icon style={{ color, marginBottom: 4 }} size={24} name={iconName} />}
+                <Text
+                  textAlign="center"
+                  fontFamily={'Poppins'}
+                  fontWeight="MEDIUM"
+                  fontSize={16}
+                  color={color}
+                >
+                  {text}
+                </Text>
+              </>
             )}
-            <Text
-              textAlign="center"
-              fontFamily={'Poppins'}
-              fontWeight="MEDIUM"
-              fontSize={16}
-              color={Colors.RED_500}
-            >
-              {text}
-            </Text>
           </View>
         )}
       </TouchableOpacity>

@@ -3,6 +3,7 @@ import { Colors } from 'utils/colors';
 
 interface SocialMediaButtonStylesProps {
   buttonContainer: ViewStyle;
+  iconContainer: ViewStyle;
 }
 
 export const styles = StyleSheet.create<SocialMediaButtonStylesProps>({
@@ -15,8 +16,13 @@ export const styles = StyleSheet.create<SocialMediaButtonStylesProps>({
     justifyContent: 'center',
     flexDirection: 'row',
     position: 'relative',
-    gap: 8,
     color: Colors.GREY_400,
     borderColor: Colors.GREY_400,
+  },
+  iconContainer: {
+    width: 20,
+    height: 20,
+    position: 'absolute',
+    left: 16,
   },
 });

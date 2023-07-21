@@ -10,7 +10,7 @@ import 'expo-dev-client';
 
 export default function App() {
   GoogleSignin.configure({
-    webClientId: '81507098020-0nv9kl5nogbithfgmur0u3e7r6sqi0sc.apps.googleusercontent.com',
+    webClientId: WEB_CLIENT_ID,
   });
 
   const [fontsLoaded] = useFonts({

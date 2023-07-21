@@ -34,7 +34,6 @@ export const inputStyles = ({ hasError }: { hasError: boolean }): InputStylesPro
       width: '100%',
       height: 44,
       paddingHorizontal: 17,
-      paddingVertical: 16,
     },
     input: {
       fontFamily: 'Poppins-Regular',
