@@ -6,10 +6,11 @@ import { Provider } from 'react-redux';
 import { Routes } from 'routes';
 import { store } from 'store';
 import { WEB_CLIENT_ID } from '@env';
+import 'expo-dev-client';
 
 export default function App() {
   GoogleSignin.configure({
-    webClientId: WEB_CLIENT_ID,
+    webClientId: '874917802643-vjsocavrjbbuupg93iugolos9aqh14ug.apps.googleusercontent.com',
   });
 
   const [fontsLoaded] = useFonts({

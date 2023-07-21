@@ -23,7 +23,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.pigzDesafio1.GoogleExpo"
+      "package": "com.desafioPigz.GoogleExpo"
     },
     "plugins": [
       "@react-native-firebase/app",

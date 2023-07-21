@@ -1,4 +1,4 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import { Dimensions, StyleSheet, ViewStyle } from 'react-native';
 import { Colors } from 'utils/colors';
 
 interface OverviewStyleProps {
@@ -9,13 +9,15 @@ interface OverviewStyleProps {
   signUpContainer: ViewStyle;
   googleContainer: ViewStyle;
 }
+
+const SCREEN_WIDTH = Dimensions.get('screen').width;
 export const styles: OverviewStyleProps = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+    width: SCREEN_WIDTH,
     paddingHorizontal: 24,
   },
   loginContainer: {
